@@ -4,9 +4,29 @@
              xmlns:local="clr-namespace:demoCamera"
              x:Class="demoCamera.MainPage">
 
-    <StackLayout>
-        <Button x:Name="pickPicButton" Text="Pick Picture"></Button>
-        <Image x:Name="myImage" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Image>
-    </StackLayout>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="55" />
+            <RowDefinition Height="400" />
+        </Grid.RowDefinitions>
+        <Image Grid.Row="0" x:Name="myImage" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+        <StackLayout  Grid.Row="1" Orientation="Horizontal">
+            <Button x:Name="takePicButton" Text="Take Picture" HorizontalOptions="FillAndExpand" />
+            <Button x:Name="pickPicButton" Text="Pick Picture" HorizontalOptions="FillAndExpand" />
+        </StackLayout>
+        <StackLayout Grid.Row="2" Margin="10">
+            <Label Text="Select item to display image" />
+            <ListView x:Name="photoListView" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Label Text="{Binding PhotoId}" VerticalOptions="Center" Margin="10" />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </Grid>
 
 </ContentPage>
